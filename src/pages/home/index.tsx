@@ -23,7 +23,7 @@ const Home: FC = () => {
     axios('http://localhost:3333/games').then(({ data }) => {
       getAllGamesFromAPI(data)
     })
-  }, [])
+  }, [games])
 
   return (
     <div className='max-w-[1344px] mx-auto flex flex-col items-center my-20 '>
