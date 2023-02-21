@@ -1,5 +1,5 @@
 import { createContext } from 'react'
-import { GameHomeProps } from '../../pages/@interface'
+import { GameHomeProps } from '@/pages/@interface'
 
 interface NlwContextProps {
   games: GameHomeProps[]

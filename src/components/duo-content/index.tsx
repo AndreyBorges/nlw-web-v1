@@ -2,11 +2,10 @@ import axios from 'axios'
 import { FC, useContext, useEffect, useState } from 'react'
 import { NLWContext } from '@/context'
 import { BackToHome, Container, ContainerPlayers, ContentGame, ContentPlayers } from './styles'
-import { LogoNlw } from '../../assets'
+import { LogoNlw } from '@/assets'
 import { ArrowLeft, GameController } from 'phosphor-react'
 import { NavLink } from 'react-router-dom'
-import DuoDiscord from '../duo-discord'
-import { useKeenSlider } from 'keen-slider/react'
+import { DuoDiscord } from '..'
 
 export interface IDuoCard {
   hourEnd: string

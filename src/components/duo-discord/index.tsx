@@ -1,11 +1,10 @@
 import axios from 'axios'
 import { FC, useContext, useEffect, useState } from 'react'
 import { NLWContext } from '@/context'
-import BackDrop from '../back-drop'
+import { BackDrop } from '..'
 import { Close, Container } from './styles'
 import { CheckCircle } from 'phosphor-react'
 import { toast, ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
 
 interface PlayerDiscord {
   discord: string
@@ -52,7 +51,7 @@ const DuoDiscord: FC = () => {
           )}
         </div>
       </Container>
-      <ToastContainer/>
+      <ToastContainer />
     </>
   )
 }

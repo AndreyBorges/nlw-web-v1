@@ -1,7 +1,7 @@
-import { useKeenSlider } from 'keen-slider/react'
+import axios from 'axios'
 import { FC, ReactNode, useEffect, useState } from 'react'
-import { NLWContext } from '../'
-import { GameHomeProps } from '../../pages/@interface'
+import { NLWContext } from '..'
+import { GameHomeProps } from '@/pages/@interface'
 
 interface NLWContextProviderProps {
   children: ReactNode
@@ -44,6 +44,14 @@ const NLWContextProvider: FC<NLWContextProviderProps> = ({ children }) => {
     findGameFromDuoPage()
     setPlayerId('')
   }, [gameId])
+
+  useEffect(() => {
+    const getDataGames = async () => {
+      const { data } = await axios('http://localhost:3333/games')
+      getAllGamesFromAPI(data)
+    }
+    getDataGames()
+  }, [games])
 
   return (
     <NLWContext.Provider
