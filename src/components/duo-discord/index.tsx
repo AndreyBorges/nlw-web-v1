@@ -4,6 +4,8 @@ import { NLWContext } from '@/context'
 import BackDrop from '../back-drop'
 import { Close, Container } from './styles'
 import { CheckCircle } from 'phosphor-react'
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 interface PlayerDiscord {
   discord: string
@@ -13,7 +15,19 @@ const DuoDiscord: FC = () => {
   const { playerId, closeDiscordModal } = useContext(NLWContext)
   const [playerDiscord, setPlayerDiscord] = useState<PlayerDiscord>()
 
-  const handleClipboard = () => {}
+  const handleClipboard = () => {
+    navigator.clipboard.writeText(playerDiscord!.discord)
+    toast.success('ID copiado com sucesso!', {
+      position: 'top-right',
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'dark'
+    })
+  }
 
   useEffect(() => {
     axios(`http://localhost:3333/ads/${playerId}/discord`).then(({ data }) =>
@@ -32,12 +46,13 @@ const DuoDiscord: FC = () => {
         <div>
           <span>Clique para copiar</span>
           {playerDiscord?.discord ? (
-            <button>{playerDiscord?.discord}</button>
+            <button onClick={handleClipboard}>{playerDiscord?.discord}</button>
           ) : (
             <button>Usuario sem discord</button>
           )}
         </div>
       </Container>
+      <ToastContainer/>
     </>
   )
 }
